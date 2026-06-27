@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain Opener Pro</title>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f1f5f9;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --danger: #ef4444;
+            --success: #22c55e;
+        }
+
+        .home-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            text-decoration: none;
+            z-index: 100;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            font-size: 30px;
+        }
+        .home-btn:hover {
+            background: var(--accent);
+            color: #000;
+            transform: translateX(1px);
+            border-right: none;
+            border-radius: 12px 0 0 12px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--accent);
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .input-section {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: #fff;
+            padding: 15px;
+            box-sizing: border-box;
+            font-family: monospace;
+            font-size: 14px;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        .btn-primary { background-color: var(--accent); color: #000; }
+        .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-1px); }
+
+        .btn-outline { background-color: transparent; border: 1px solid var(--accent); color: var(--accent); }
+        .btn-outline:hover { background-color: rgba(56, 189, 248, 0.1); }
+
+        .list-section {
+            display: grid;
+            gap: 10px;
+        }
+
+        .domain-item {
+            background: var(--card-bg);
+            padding: 12px 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+            border-left: 4px solid var(--accent);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .domain-info {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-right: 15px;
+        }
+
+        .domain-url {
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        .open-single-btn {
+            background: #334155;
+            color: var(--accent);
+            padding: 6px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 12px;
+            border: 1px solid transparent;
+            transition: 0.2s;
+        }
+
+        .open-single-btn:hover {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .hint-text {
+          text-align: center;
+          font-size: 12px;
+          color: #64748b;
+          margin-top: 10px;
+        }
+
+
+      /* Tooltip */
+        /* .link-with-tooltip {
+          text-decoration: none;
+        } */
+
+        /* Скрытый блок для подсказки */
+        .link-with-tooltip .tooltip {
+          display: none;
+          position: absolute;
+          top: -1px;
+          left: 99%;
+          padding: 5px 10px;
+          border-radius: 0 12px 12px 0;
+          white-space: nowrap;
+          font-size: 12px;
+          align-items: center;
+          background: #38bdf8;
+          color: #000;
+          border: 1px solid #334155;
+          height: 42px;
+          box-sizing: border-box;
+          border-left: none;
+        }
+
+        /* Показ подсказки мгновенно при наведении */
+        .link-with-tooltip:hover .tooltip {
+          display: flex;
+        }
+
+    </style>
+</head>
+<body>
+
+<a href="https://danil-tkachuk.github.io/script-vault" target="_blank" class="home-btn link-with-tooltip">
+    <i class="ph ph-file-js"></i>
+    <span class="tooltip">Script Vault</span>
+</a>
+
+<div class="container">
+    <h1>Domain Checker</h1>
+
+    <div class="input-section">
+        <textarea id="domainInput" placeholder="Вставьте список доменов здесь...&#10;example.com&#10;google.com"></textarea>
+        <div class="controls">
+            <button class="btn-outline" onclick="generateList()">Обработать список</button>
+            <button class="btn-primary" onclick="openAll()">Открыть всё сразу</button>
+        </div>
+        <p class="hint-text">Параметр: <strong>?test=9517530</strong> будет добавлен автоматически</p>
+        <p class="hint-text"><strong>Чтобы открыть одновременно несколько вкладок, разрешите всплывающие окна в углу адресной строки!</strong></p>
+    </div>
+
+    <div id="resultList" class="list-section"></div>
+</div>
+
+<script>
+    const PARAM = '?test=9517530';
+
+    function formatUrl(rawUrl) {
+        let domain = rawUrl.trim();
+        if (!domain) return null;
+        if (!/^https?:\/\//i.test(domain)) {
+            domain = 'https://' + domain;
+        }
+        return domain + PARAM;
+    }
+
+    function generateList() {
+        const input = document.getElementById('domainInput').value;
+        const container = document.getElementById('resultList');
+        const lines = input.split('\n');
+        
+        container.innerHTML = ''; // Очистить старое
+
+        lines.forEach(line => {
+            const finalUrl = formatUrl(line);
+            if (finalUrl) {
+                const div = document.createElement('div');
+                div.className = 'domain-item';
+                div.innerHTML = `
+                    <div class="domain-info">
+                        <span class="domain-url">${finalUrl}</span>
+                    </div>
+                    <a href="${finalUrl}" target="_blank" class="open-single-btn">Открыть страницу</a>
+                `;
+                container.appendChild(div);
+            }
+        });
+    }
+
+    function openAll() {
+        const input = document.getElementById('domainInput').value;
+        const lines = input.split('\n');
+        let count = 0;
+
+        lines.forEach(line => {
+            const finalUrl = formatUrl(line);
+            if (finalUrl) {
+                window.open(finalUrl, '_blank');
+                count++;
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
